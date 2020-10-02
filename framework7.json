@@ -1,0 +1,27 @@
+{
+  "cwd": "/home/moe/source/svelte-framework7-ListInputPassword",
+  "type": [
+    "pwa",
+    "web"
+  ],
+  "name": "TestPasswordApp",
+  "framework": "svelte",
+  "template": "single-view",
+  "cssPreProcessor": false,
+  "bundler": "webpack",
+  "webpack": {
+    "developmentSourceMap": true,
+    "productionSourceMap": true,
+    "hashAssets": false,
+    "preserveAssetsPaths": false,
+    "inlineAssets": true
+  },
+  "theming": {
+    "customColor": false,
+    "color": "#007aff",
+    "darkTheme": false,
+    "iconFonts": true,
+    "fillBars": false
+  },
+  "customBuild": false
+}
