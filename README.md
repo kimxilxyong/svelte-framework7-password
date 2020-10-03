@@ -1,3 +1,7 @@
+[![Downloads](https://img.shields.io/github/downloads/kimxilxyong/svelte-framework7-password/total.svg)]()
+[![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
+[![Badges](http://img.shields.io/:badges-3/3-ff6799.svg)](https://github.com/kimxilxyong/svelte-framework7-password)
+
 # svelte-framework7-password
 Password input field with show/hide password eye button for svelte with framework7
 
@@ -5,6 +9,7 @@ Password input field with show/hide password eye button for svelte with framewor
 
 ```bash
 git clone https://github.com/kimxilxyong/svelte-framework7-password.git
+cd svelte-framework7-password
 ```
 
 ```bash
