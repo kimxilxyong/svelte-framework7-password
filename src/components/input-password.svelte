@@ -11,58 +11,57 @@
     id="{id}"
     inputId="REMOVEDINPUT"
     value="{password}"
-    onInputClear="{(e) => {password = ""; clearButtonVisible = false; thisInput.focus();}}"  
+    onInputClear="{() => {password = ""; clearButtonVisible = false; thisInput.focus();}}"
     onFocus={onFocus}
     onBlur={onBlur}
     onInputNotempty={onInputNotempty}
     onInputEmpty={onInputEmpty}
   >
       <div slot="input" style="display:flex;flex-direction: row;justify-content: flex-end;align-items:stretch;min-height: inherit;">
-          <div style="flex: 1 1 90%;">               
-            {#if passwordVisible} 
-                <input type="text" bind:value="{password}" bind:this={thisInput} id={inputId} 
-                on:input="{(e) => onInput(e)}"
-                on:change="{(e) => onChange(e)}"
+          <div style="flex: 1 1 90%;">
+            {#if passwordVisible}
+                <input type="text" bind:value="{password}" bind:this={thisInput} id={inputId}
+                on:input="{() => onInput()}"
+                on:change="{() => onChange()}"
+                spellcheck="false"
                 >
             {:else}
-                <input type="password" bind:value="{password}" bind:this={thisInput} id={inputId} 
-                on:input="{(e) => onInput(e)}"
-                on:change="{(e) => onChange(e)}"
+                <input type="password" bind:value="{password}" bind:this={thisInput} id={inputId}
+                on:input="{() => onInput()}"
+                on:change="{() => onChange()}"
+                spellcheck="false"
                 >
             {/if}
-          </div>           
-          <div style="max-width:2em;margin-right:3px;flex: 0 0 5%;display:flex;justify-content:center;align-items:center;z-index:2;cursor:pointer;">
-            <div class="f7-icons password-eye-button" on:click="{(e) => togglePasswordHidden(e)}">{eyeStyle}</div>
+          </div>
+          <div style="max-width:2.5em;min-width:2em;margin-right:4px;flex: 0 0 5%;display:flex;justify-content:center;align-items:center;z-index:12;cursor:pointer;">
+            <div class="f7-icons password-eye-button" on:click="{() => togglePasswordHidden()}">{eyeStyle}</div>
           </div>
           {#if clearButtonVisible}
-            <div style="max-width:1.5em;flex: 0 0 5%;justify-content:center;align-items:center;">              
+            <div style="max-width:1.7em;min-width:1.6em;flex: 0 0 5%;justify-content:center;align-items:center;">
             </div>
           {/if}
       </div>
 </ListInput>
 
 <style>
-
     .password-eye-button
-    {        
-        z-index: 1;
+    {
+        z-index: 11;
         color: var(--f7-input-clear-button-color);
         font-size: 22px;
         transition-duration: 100ms;
         pointer-events: visible;
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);        
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         -webkit-font-smoothing: antialiased;
     }
 </style>
 
 <script>
     import {
-      List,    
-      ListItem,
-      ListInput, 
+      ListInput,
     } from 'framework7-svelte';
     import { tick } from 'svelte';
-  
+
     export let passwordVisible = false;
     export let password;
     export let label;
@@ -78,34 +77,32 @@
     export let onInputEmpty;
 
     let thisInput;
-    let passwordType = "password";    
-    let eyeStyle = "eye_slash";
+    let passwordType = "password";
+    let eyeStyle = "eye";
 
-    function passwordChanged(e) {
-      password = e.target.value;
-    }
-    async function togglePasswordHidden(e) {
+    /* eslint-ignore next line */
+    async function togglePasswordHidden() {
       if (passwordVisible) {
         passwordType = "password";
-        passwordVisible = false;        
-        eyeStyle = "eye_slash";
+        passwordVisible = false;
+        eyeStyle = "eye";
       } else {
         passwordType = "text";
-        passwordVisible = true;        
-        eyeStyle = "eye";
+        passwordVisible = true;
+        eyeStyle = "eye_slash";
       }
       await tick();
       thisInput.focus();
     }
-    function onInput(e) {      
+    function onInput() {
       thisInput.blur();
       thisInput.focus();
     }
-    function onChange(e) {      
+    function onChange() {
       if ( thisInput.className.includes("input-with-value")) {
-        clearButtonVisible = true;  
+        clearButtonVisible = true;
       } else {
         clearButtonVisible = false;
       }
-    }  
+    }
   </script>
