@@ -1,5 +1,6 @@
 <!-- SPDX-License-Identifier: MIT
-     Copyright (c) 2020 Kim Il Yong -->
+     Copyright (c) 2020 Kim Il Yong
+     Version 1.0.0 -->
 
 <ListInput
     input={true}
@@ -33,7 +34,7 @@
                 >
             {/if}
           </div>
-          <div style="max-width:2.5em;min-width:2em;margin-right:4px;flex: 0 0 5%;display:flex;justify-content:center;align-items:center;z-index:12;cursor:pointer;">
+          <div style="max-width:2.5em;min-width:2em;margin-right:6px;flex: 0 0 5%;display:flex;justify-content:center;align-items:center;z-index:12;cursor:pointer;">
             <div class="f7-icons password-eye-button" on:click="{() => togglePasswordHidden()}">{eyeStyle}</div>
           </div>
           {#if clearButtonVisible}
@@ -47,7 +48,7 @@
     .password-eye-button
     {
         z-index: 11;
-        color: var(--f7-input-clear-button-color);
+        color: grey;
         font-size: 22px;
         transition-duration: 100ms;
         pointer-events: visible;
